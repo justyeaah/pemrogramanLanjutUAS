@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: #fceef5;
+  color: #444;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #ffc0cb;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #ff5e7e;
+  border: 2px solid #ff5e7e;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #ff5e7e;
+  color: #fff;
+}
+
+.diary-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.diary-form {
+  background: #fff;
+  padding: 40px 30px;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+.diary-form label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: 600;
+  color: #ff5e7e;
+}
+
+.diary-form input[type="text"],
+.diary-form textarea {
+  width: 100%;
+  padding: 12px 15px; 
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ffc0cb;
+  font-family: inherit;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.diary-form textarea {
+  min-height: 200px;
+}
+
+.save-btn {
+  display: inline-block;
+  background: #ff5e7e;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+  background: #e04867;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .diary-form {
+    padding: 20px;
+  }
+}
