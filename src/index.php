@@ -1,2 +1,1 @@
-<?php
-echo "Hello, Railway + Docker + Apache + PostgreSQL!";
+<?php echo "Hello Railway"; ?>

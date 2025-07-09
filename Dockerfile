@@ -1,16 +1,20 @@
+# Gunakan image PHP + Apache resmi
 FROM php:8.2-apache
 
+# Install ekstensi PostgreSQL
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo pgsql pdo_pgsql
+    docker-php-ext-install pdo_pgsql pgsql
 
+# Aktifkan mod_rewrite (jika perlu)
 RUN a2enmod rewrite
 
-# Tambahkan ServerName
+# Atur ServerName untuk suppress warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Salin file PHP ke container
 WORKDIR /var/www/html
-
 COPY ./src/ /var/www/html/
 
-CMD ["apache2-foreground"]
+# Buka port 80
+EXPOSE 80
