@@ -15,7 +15,6 @@ services:
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: postgres
       POSTGRES_HOST: postgres
-    command: apache2-foreground
 
   postgres:
     image: postgres:15
