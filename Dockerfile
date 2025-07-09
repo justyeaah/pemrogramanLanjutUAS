@@ -8,3 +8,5 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 COPY . /var/www/html
+
+CMD ["apache2-foreground"]
