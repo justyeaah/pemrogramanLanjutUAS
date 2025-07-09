@@ -7,3 +7,4 @@ RUN apt-get update && \
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html
+COPY . /var/www/html
