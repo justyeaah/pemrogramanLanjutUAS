@@ -1,16 +1,14 @@
+# Gunakan image resmi PHP dengan Apache
 FROM php:8.2-apache
 
-RUN apt-get update && \
-    apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo pgsql pdo_pgsql
+# Install ekstensi PostgreSQL untuk PHP
+RUN docker-php-ext-install pgsql pdo pdo_pgsql
 
-RUN a2enmod rewrite
-
-# Tambahkan ServerName
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-
-WORKDIR /var/www/html
-
+# Copy file project ke direktori Apache
 COPY ./src/ /var/www/html/
 
-CMD ["apache2-foreground"]
+# Berikan hak akses
+RUN chown -R www-data:www-data /var/www/html
+
+# Aktifkan mod_rewrite (opsional)
+RUN a2enmod rewrite

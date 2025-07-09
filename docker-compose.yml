@@ -3,31 +3,32 @@ version: "3.8"
 services:
   php-apache:
     build: .
-    container_name: php_app
+    container_name: php_native_app
     ports:
       - "8080:80"
     depends_on:
       - postgres
     volumes:
       - ./src:/var/www/html
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: postgres
-      POSTGRES_HOST: postgres
+    networks:
+      - app-network
 
   postgres:
     image: postgres:15
-    container_name: postgres
-    restart: always
+    container_name: postgres_db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: postgres
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
 
 volumes:
-  postgres_data:
+  pgdata:
+
+networks:
+  app-network:
