@@ -9,7 +9,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./src:/var/www/html
+      - .:/var/www/html
     environment:
       DATABASE_URL: postgresql://postgres:12345@postgres:5432/postgres
 

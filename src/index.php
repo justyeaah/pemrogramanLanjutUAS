@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'connect.php';
 
 echo "<h1>PHP + PostgreSQL Connected!</h1>";
 

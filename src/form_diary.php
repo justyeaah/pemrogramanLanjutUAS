@@ -6,10 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $title = $_POST['title'];
   $write = $_POST['write'];
   $date = date('Y-m-d');
-  $user_id = $_SESSION['user_id'];
+  $iduser = $_SESSION['user_id'];
 
-  $query = "INSERT INTO \"diary\" (\"title\", \"write\", \"date\", \"user_id\") 
-            VALUES ('$title', '$write', '$date', '$user_id')";
+  $query = "INSERT INTO \"diary\" (\"title\", \"write\", \"date\", \"iduser\") 
+            VALUES ('$title', '$write', '$date', '$iduser')";
 
   $result = pg_query($connect, $query);
 

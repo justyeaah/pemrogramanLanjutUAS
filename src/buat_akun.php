@@ -22,15 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Buat ID baru manual
-    $idResult = pg_query($connect, "SELECT iduser FROM \"user\" ORDER BY iduser DESC LIMIT 1");
-    $lastId = pg_fetch_assoc($idResult)['iduser'] ?? 'U000';
-    $lastNumber = intval(substr($lastId, 3));
-    $newNumber = $lastNumber + 1;
-    $newId = 'U' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+    // HASH password biar aman!
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    // Simpan user baru
-    $insertQuery = "INSERT INTO \"user\" (iduser, username, password) VALUES ('$newId', '$username', '$password')";
+    // Simpan user baru (Postgres auto increment iduser)
+    $insertQuery = "INSERT INTO \"user\" (username, password) VALUES ('$username', '$hash')";
     $insertResult = pg_query($connect, $insertQuery);
 
     if ($insertResult) {

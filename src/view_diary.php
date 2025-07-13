@@ -13,9 +13,9 @@ if (!isset($_GET['id'])) {
 }
 
 $iddi = $_GET['id'];
-$user_id = $_SESSION['user_id'];
+$iduser = $_SESSION['user_id'];
 
-$query = "SELECT * FROM \"diary\" WHERE \"iddiary\" = '$iddi' AND \"user_id\" = '$user_id'";
+$query = "SELECT * FROM \"diary\" WHERE \"iddiary\" = '$iddi' AND \"iduser\" = '$iduser'";
 $result = pg_query($connect, $query);
 
 if (pg_num_rows($result) == 0) {

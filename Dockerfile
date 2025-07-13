@@ -1,20 +1,23 @@
-# Gunakan PHP + Apache resmi
 FROM php:8.2-apache
 
-# Install ekstensi PostgreSQL
 RUN apt-get update && \
-    apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo_pgsql pgsql
+    apt-get install -y libpq-dev unzip && \
+    docker-php-ext-install pdo pdo_pgsql pgsql
 
-# Aktifkan mod_rewrite
 RUN a2enmod rewrite
 
-# Atur ServerName untuk suppress warning
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# Copy Composer dari image Composer resmi
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy project ke container
+# Pindah ke /var/www/html
 WORKDIR /var/www/html
-COPY ./src/ /var/www/html/
 
-# Buka port 80
+# Copy semua ke /var/www/html
+COPY . .
+
+# Pindah ke folder src untuk install vendor-nya
+WORKDIR /var/www/html
+
+RUN composer install
+
 EXPOSE 80

@@ -7,9 +7,9 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
+$iduser = $_SESSION['user_id'];
 
-$query = "SELECT * FROM \"diary\" WHERE \"user_id\" = '$user_id' ORDER BY \"date\" DESC";
+$query = "SELECT * FROM \"diary\" WHERE \"iduser\" = '$iduser' ORDER BY \"date\" DESC";
 $result = pg_query($connect, $query);
 ?>
 
