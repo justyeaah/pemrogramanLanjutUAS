@@ -1,5 +1,25 @@
-.vscode
-.git
-node_modules
-Dockerfile
-docker-compose.yml
+# Folder & file editor
+.vscode/
+.idea/
+
+# Folder version control internal
+.git/
+
+# File OS
+.DS_Store
+Thumbs.db
+
+# Cache PHP / log
+*.log
+
+# Output upload sementara
+*.tmp
+
+# Node.js (kalau gak pakai NodeJS, ini boleh dihapus)
+node_modules/
+
+# Composer autoload (optional, kalau deploy CI/CD generate lagi)
+# /vendor/
+
+# Env file (kalau mau rahasia, tapi harus bikin .env contoh)
+.env
