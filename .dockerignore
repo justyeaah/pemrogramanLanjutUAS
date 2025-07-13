@@ -1,25 +1,25 @@
-# Folder & file editor
+# Folder editor
 .vscode/
 .idea/
 
-# Folder version control internal
+# Git repo metadata
 .git/
 
-# File OS
+# OS trash files
 .DS_Store
 Thumbs.db
 
-# Cache PHP / log
+# Cache & log
 *.log
-
-# Output upload sementara
 *.tmp
 
-# Node.js (kalau gak pakai NodeJS, ini boleh dihapus)
+# Node modules (kalau pakai Node.js)
 node_modules/
 
-# Composer autoload (optional, kalau deploy CI/CD generate lagi)
+# Kalau vendor MAU DI-INCLUDE, JANGAN DI-IGNORE.
+# Kalau vendor mau di-install di Docker, baru di-ignore.
 # /vendor/
 
-# Env file (kalau mau rahasia, tapi harus bikin .env contoh)
-.env
+# Kalau ENV MAU DI-INCLUDE, JANGAN DI-IGNORE.
+# Kalau pakai secrets di Zeabur, boleh di-ignore.
+# .env

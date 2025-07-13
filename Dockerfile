@@ -1,23 +1,25 @@
+# Base image
 FROM php:8.2-apache
 
+# Install PostgreSQL extension & unzip (untuk Composer)
 RUN apt-get update && \
     apt-get install -y libpq-dev unzip && \
     docker-php-ext-install pdo pdo_pgsql pgsql
 
+# Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Copy Composer dari image Composer resmi
+# Tambah Composer dari image resmi
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Pindah ke /var/www/html
+# Pindah ke root project
 WORKDIR /var/www/html
 
-# Copy semua ke /var/www/html
+# Copy SEMUA isi project ke dalam container
 COPY . .
 
-# Pindah ke folder src untuk install vendor-nya
-WORKDIR /var/www/html
+# Kalau vendor TIDAK di-copy, jalankan ini:
+# RUN composer install
 
-RUN composer install
-
+# Port expose
 EXPOSE 80
